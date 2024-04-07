@@ -13,5 +13,22 @@ require('mason-lspconfig').setup({
   ensure_installed = {},
   handlers = {
     lsp_zero.default_setup,
+    lua_ls = function()
+        require('lspconfig').lua_ls.setup({
+            single_file_support = false,
+            on_attach = function(client, bufnr)
+                print('hi lua')
+            end
+        })
+    end,
+    jdtls = function()
+        require('lspconfig').jdtls.setup({
+            single_file_support = false,
+            on_attach = function(client, bufnr)
+                print('hi java')
+            end
+        })
+    end,
+    
   },
 })
